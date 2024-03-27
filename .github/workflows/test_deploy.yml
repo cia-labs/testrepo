@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build_and_deploy:
 
     runs-on: ubuntu-latest
     permissions:
@@ -40,9 +40,6 @@ jobs:
       run: |
         pytest tests/*.py
 
-    # - name: POST request to re-deploy
-    #   run: |
-    #     curl -X POST https://docker.cialabs.tech/api/stacks/webhooks/9b0d96ed-dcfc-4083-a3a4-40e0c0f1977c -H "Content-Type: application/json" 
   
     - name: Log in to the GitHub Container Registry
       uses: docker/login-action@v1
@@ -58,3 +55,7 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ghcr.io/${{ github.repository_owner }}/ciaos:${{ github.sha }}
+        
+    - name: POST request to re-deploy
+      run: |
+        curl -X POST https://docker.cialabs.tech/api/stacks/webhooks/9b0d96ed-dcfc-4083-a3a4-40e0c0f1977c?BUILD_HASH=${{ github.sha }} -H "Content-Type: application/json" 

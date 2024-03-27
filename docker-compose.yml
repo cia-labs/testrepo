@@ -1,9 +1,8 @@
-version: '3'
+version: '3.8'
 services:
-  app:
-    image: testrepov1.2
-    build:
-      context: .
-      dockerfile: Dockerfile
+  ciaos-app:
+    image: ghcr.io/cia-labs/ciaos:BUILD_HASH
+    environment:
+      - MY_ENV_VAR=value
     ports:
       - 12000:8000

@@ -6,4 +6,4 @@ def test_root_endpoint():
     client = TestClient(app)
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"Hello": "World!!"}
+    assert response.json() == {"Hello": "World!!!"}

@@ -40,7 +40,7 @@ jobs:
         pytest tests/*.py   
 
   build_and_delpoy:
-
+    needs: test_and_lint	        # keyword
     runs-on: ubuntu-latest
     permissions:
       contents: read

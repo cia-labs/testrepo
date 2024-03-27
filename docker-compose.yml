@@ -1,8 +1,6 @@
 version: '3.8'
 services:
   ciaos-app:
-    image: ghcr.io/cia-labs/testrepo:BUILD_HASH
-    environment:
-      - MY_ENV_VAR=value
+    image: ghcr.io/cia-labs/testrepo:${BUILD_HASH}
     ports:
       - 12000:8000

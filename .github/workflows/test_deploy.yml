@@ -37,8 +37,6 @@ jobs:
       run: |
         pytest tests/*.py
 
-    # - name: Deploy Webhook
-    #   uses: dimstributhor/workflow-webhook
-    #   with:
-    #     url: "https://docker.cialabs.tech/api/stacks/webhooks/9b0d96ed-dcfc-4083-a3a4-40e0c0f1977c"
-    #     json: '{}'
+    - name: POST request to re-deploy
+      run: |
+        curl -X POST https://docker.cialabs.tech/api/stacks/webhooks/9b0d96ed-dcfc-4083-a3a4-40e0c0f1977c -H "Content-Type: application/json" 

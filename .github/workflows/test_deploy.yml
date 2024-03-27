@@ -58,4 +58,5 @@ jobs:
         
     - name: POST request to re-deploy
       run: |
-        curl -X POST https://docker.cialabs.tech/api/stacks/webhooks/9b0d96ed-dcfc-4083-a3a4-40e0c0f1977c?BUILD_HASH=${{ github.sha }} -H "Content-Type: application/json" 
+        curl -X POST https://docker.cialabs.tech/api/stacks/webhooks/18e527a4-3a81-47da-8b8a-0a5f905fe9ea?BUILD_HASH=${{ github.sha }} -H "Content-Type: application/json" 
+        
